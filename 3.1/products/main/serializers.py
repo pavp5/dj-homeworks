@@ -8,7 +8,8 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class ProductListSerializer(serializers.Serializer):
     # реализуйте поля title и price
-    pass
+    title = serializers.CharField()
+    price = serializers.IntegerField()
 
 
 class ProductDetailsSerializer(serializers.ModelSerializer):

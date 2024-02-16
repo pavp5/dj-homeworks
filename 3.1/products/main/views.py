@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from main.serializers import ReviewSerializer, ProductListSerializer, ProductDetailsSerializer
+from .models import Product
 
 
 @api_view(['GET'])
@@ -11,7 +12,9 @@ def products_list_view(request):
     """реализуйте получение всех товаров из БД
     реализуйте сериализацию полученных данных
     отдайте отсериализованные данные в Response"""
-    pass
+    products = Product.objects.all()
+    ser = ProductListSerializer(products, many=True)
+    return Response(ser.data)
 
 
 class ProductDetailsView(APIView):
