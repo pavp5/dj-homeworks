@@ -1,10 +1,11 @@
 from django.shortcuts import render
+from django.http import Http404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from main.serializers import ReviewSerializer, ProductListSerializer, ProductDetailsSerializer
-from .models import Product
+from main.models import Product
 
 
 @api_view(['GET'])
@@ -22,7 +23,12 @@ class ProductDetailsView(APIView):
         """реализуйте получение товара по id, если его нет, то выдайте 404
         реализуйте сериализацию полученных данных
         отдайте отсериализованные данные в Response"""
-        pass
+        try:
+            product = Product.objects.get(id=product_id)
+            ser = ProductDetailsSerializer(product)
+            return Response(ser.data)
+        except Product.DoesNotExist:
+            raise Http404('Product not found')
 
 
 # доп задание:
@@ -32,4 +38,15 @@ class ProductFilteredReviews(APIView):
         реализуйте получение отзывов по конкретному товару с определённой оценкой
         реализуйте сериализацию полученных данных
         отдайте отсериализованные данные в Response"""
-        pass
+        product = Product.objects.get(id=product_id)
+        ser = ProductDetailsSerializer(product)
+        mark = request.query_params.get('mark')
+        data = ser.data
+        if mark is not None:
+            mark = int(mark)
+            mark_comments = []
+            for comment in data['comments']:
+                if comment['mark'] == mark:
+                    mark_comments.append(comment)
+            data['comments'] = mark_comments
+        return Response(data)

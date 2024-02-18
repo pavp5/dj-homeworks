@@ -1,3 +1,8 @@
+# Задание 3.1 «Знакомство с API на примере Django REST framework»
+
+- [serializers.py](./3.1/products/main/serializers.py)
+- [views.py](./3.1/products/main/views.py)
+
 # Задание 2.1 «Автосалон»
 
 ## main/
