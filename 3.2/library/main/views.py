@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from main.models import Book, Order
-from main.serializers import BookSerializer
+from main.serializers import BookSerializer, OrderSerializer
 
 
 @api_view(['GET'])
@@ -48,4 +48,5 @@ class BookDeleteView(DestroyAPIView):
 
 class OrderViewSet(viewsets.ModelViewSet):
     # реализуйте CRUD для заказов
-    ...
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
