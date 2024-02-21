@@ -10,10 +10,10 @@ class BookSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     #доп задание
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['orders_count'] = ...
-    #     return representation
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['orders_count'] = Order.objects.filter(books=instance.id).count()
+        return representation
 
 
 class OrderSerializer(serializers.ModelSerializer):
@@ -23,7 +23,7 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     #доп задание
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['books'] = ...
-    #     return representation
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['books'] = Book.objects.filter(id__in=instance.books.all()).values()
+        return representation

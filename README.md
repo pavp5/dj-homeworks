@@ -1,7 +1,14 @@
+# Задание 3.2 «CRUD в DRF»
+
+- [serializers.py](./3.2/library/main/serializers.py)
+- [views.py](./3.2/library/main/views.py)
+
+
 # Задание 3.1 «Знакомство с API на примере Django REST framework»
 
 - [serializers.py](./3.1/products/main/serializers.py)
 - [views.py](./3.1/products/main/views.py)
+
 
 # Задание 2.1 «Автосалон»
 
@@ -11,11 +18,9 @@
 - [models.py](./2.1/orm_shop/main/models.py)
 - [views.py](./2.1/orm_shop/main/views.py)
 
-
 ## orm_shop/
 
 - [settings.py](./2.1/orm_shop/orm_shop/settings.py)
-
 
 
 # Задание 1.2 «Обработка запросов и шаблоны»
@@ -28,7 +33,6 @@
 ## Пагинация
 
 - [views.py](./1.2-requests-templates/pagination/stations/views.py)
-
 
 
 # Задание 1.1 «Знакомство с Django. Подготовка и запуск проекта»
