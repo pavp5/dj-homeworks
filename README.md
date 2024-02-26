@@ -1,3 +1,8 @@
+ # Задание 3.3 «Разделение доступа в DRF»
+
+- [api_with_restrictions](./3.3-permissions/api_with_restrictions)
+
+
 # Задание 3.2 «CRUD в DRF»
 
 - [serializers.py](./3.2/library/main/serializers.py)
