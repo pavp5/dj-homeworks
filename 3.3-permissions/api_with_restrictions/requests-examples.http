@@ -3,7 +3,7 @@
 @baseUrl = http://localhost:8000/api
 
 # получение объявлений
-GET {{baseUrl}}/advertisements/
+GET {{baseUrl}}/advertisements/1
 Content-Type: application/json
 
 ###
@@ -21,22 +21,22 @@ Authorization: Token 63997b3c386d5910e0fbd218fb7c14d059295f09
 ###
 
 # попытка поменять объявление
-PATCH {{baseUrl}}/advertisements/1/
+PATCH {{baseUrl}}/advertisements/2/
 Content-Type: application/json
 Authorization: Token 0fa1081feda654c38f11a73f52043139a9a09c7e
 
 {
-  "status": "OPEN"
+  "status": "CLOSED"
 }
 
 ###
 
 # фильтрация по создателю
-GET {{baseUrl}}/advertisements/?creator=1
+GET {{baseUrl}}/advertisements/?creator=2
 Content-Type: application/json
 
 ###
 
 # фильтрация по дате
-GET {{baseUrl}}/advertisements/?created_at_before=2025-10-01
+GET {{baseUrl}}/advertisements/?created_at_after=2024-02-28
 Content-Type: application/json
